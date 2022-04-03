@@ -19,6 +19,19 @@ radio.onReceivedString(function (receivedString) {
         Kitronik_Robotics_Board.servoWrite(Kitronik_Robotics_Board.Servos.Servo1, 26)
         basic.pause(100)
     }
+    for (let index = 0; index < 4; index++) {
+        pins.digitalWritePin(DigitalPin.P0, 1)
+        pins.digitalWritePin(DigitalPin.P1, 1)
+        basic.pause(200)
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        basic.pause(200)
+        pins.digitalWritePin(DigitalPin.P0, 1)
+        pins.digitalWritePin(DigitalPin.P1, 1)
+        basic.pause(200)
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+    }
     Kitronik_Robotics_Board.allOff()
 })
 radio.setGroup(1)
@@ -30,6 +43,6 @@ basic.showLeds(`
     . # . . #
     # . . . .
     `)
-loops.everyInterval(1000, function () {
+loops.everyInterval(60000, function () {
     Kitronik_Robotics_Board.allOff()
 })
